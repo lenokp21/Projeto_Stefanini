@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<h:outputStylesheet library="css" name="estilos.css" />
+	<title>S.G.F</title>
+	
+	<style type="text/css">
+        .ui-widget,.ui-widget .ui-widget {
+            font-size: 100% !important;
+            
+            }
+             .ui-layout-north, .ui-layout-south {                    
+                overflow:hidden !important;
+            }
+
+            .ui-layout-north, .ui-layout-south, .ui-layout-unit-content {
+                overflow:hidden !important;
+            } 
+    </style>
+	
+</h:head>
+<h:body>
+
+	<p:layout fullPage="true">
+		<p:layoutUnit position="north" >
+			<ui:insert name="cabecalho"></ui:insert>
+		</p:layoutUnit>
+		
+		<p:layoutUnit position="west" >
+			<ui:insert name="formulario"></ui:insert>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center">
+			<ui:insert name="conteudo"></ui:insert>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="south" size="30" >
+			<ui:insert name="rodape"></ui:insert>
+		</p:layoutUnit>
+	</p:layout>
+
+</h:body>
+</html>

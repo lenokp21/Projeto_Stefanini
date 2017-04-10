@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<div align="center">
+		<h:form>
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Funcionarios:" />
+				<p:outputLabel value="#{funcionarioBean.funcionarios.size()}" />
+
+				<p:outputLabel value="Empresas:" />
+				<p:outputLabel value="#{empresaBean.empresas.size()}" />
+
+				<p:outputLabel value="Cargos:" />
+				<p:outputLabel value="#{cargoBean.cargos.size()}" />
+			</p:panelGrid>
+		</h:form>
+	</div>
+</ui:composition>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<div align="center">
+		<h:form id="contCargo">
+				<h:panelGrid >
+					<p:dataTable value="#{cargoBean.cargos}" var="cg" scrollable="true"
+						scrollHeight="345">
+						<p:column headerText="Cargo">
+							<h:outputText value="#{cg.cargo}" />
+						</p:column>
+						<p:column headerText="Descricao">
+							<h:outputText value="#{cg.descricao}" />
+						</p:column>
+						<p:column headerText="valor Trab/Horas">
+							<h:outputText value="#{cg.valorHora}" />
+						</p:column>
+						<p:column style="width: 15%">
+							<p:commandButton icon="ui-icon-pencil"
+								action="#{cargoBean.editar(cg)}" update="dadoCargo" />
+							<p:commandButton icon="ui-icon-trash"
+								action="#{cargoBean.excluir(cg)}" update="@form" />
+						</p:column>
+					</p:dataTable>
+				</h:panelGrid>
+		</h:form>
+	</div>
+</ui:composition>

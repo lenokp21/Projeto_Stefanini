@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<div>
+		<h:form id="dadoFunc">
+				<h:panelGrid columns="2" >
+					
+					<p:outputLabel for="nome" value="Nome:" />
+					<p:inputText id="nome" value="#{funcionarioBean.funcionario.nome}" />
+
+					<p:outputLabel for="cpf" value="CPF:" />
+					<p:inputText maxlength="11" id="cpf" value="#{funcionarioBean.funcionario.cpf}" />
+
+					<p:outputLabel for="end" value="Endereço:" />
+					<p:inputText id="end"
+						value="#{funcionarioBean.funcionario.endereco}" />
+
+					<p:outputLabel for="tel" value="Telefone:" />
+					<p:inputText id="tel"
+						value="#{funcionarioBean.funcionario.telefone}" />
+
+					<p:outputLabel for="cargo" value="Cargo:" />
+					<p:selectOneListbox id="cargo"
+						value="#{funcionarioBean.funcionario.idCargo}" scrollHeight="100">
+						<f:selectItems value="#{cargoBean.cargos}" var="cg"
+							itemLabel="#{cg.cargo}" itemValue="#{cg.id}" />
+					</p:selectOneListbox>
+
+					<p:outputLabel for="emp" value="Empresa:" />
+					<p:selectOneListbox id="emp"
+						value="#{funcionarioBean.funcionario.idEmpresa}" scrollHeight="100" >
+						<f:selectItems value="#{empresaBean.empresas}" var="emp"
+							itemLabel="#{emp.nomeFantasia}" itemValue="#{emp.id}" />
+					</p:selectOneListbox>
+
+					<p:outputPanel />
+					<p:panelGrid columns="2" >
+						<p:commandButton value="Novo" action="#{funcionarioBean.novo()}"
+							update="dadoFunc" />
+						<p:commandButton value="Salvar"
+							action="#{funcionarioBean.salvar()}" update="contFunc" />
+					</p:panelGrid>
+					
+					<f:facet name="header">
+					<p:outputLabel value="Dados do Funcionario" style="font-size: 23px; " />
+				</f:facet>
+
+				</h:panelGrid>
+		</h:form>
+	</div>
+</ui:composition>

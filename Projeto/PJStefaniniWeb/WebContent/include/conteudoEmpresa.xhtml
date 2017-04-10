@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<div>
+		<h:form id="contEmp">
+				<h:panelGrid >
+					<p:dataTable value="#{empresaBean.empresas}" var="emp" scrollable="true" scrollHeight="345" >
+					
+						<p:column headerText="Nome Fantasia">
+							<h:outputText value="#{emp.nomeFantasia}" />
+						</p:column>
+						<p:column headerText="Nome Empresarial" visible="false">
+							<h:outputText value="#{emp.nomeEmpresarial}" />
+						</p:column>
+						
+						<p:column headerText="CNPJ">
+							<h:outputText value="#{emp.cnpj}" />
+						</p:column>
+						
+						<p:column headerText="Endereco">
+							<h:outputText value="#{emp.endereco}" />
+						</p:column>
+						<p:column headerText="Telefone">
+							<h:outputText value="#{emp.telefone}" />
+						</p:column>
+						<p:column style="width: 15%">
+							<p:commandButton icon="ui-icon-pencil"
+								action="#{empresaBean.editar(emp)}" update="dadoEmp" />
+							<p:commandButton icon="ui-icon-trash"
+								action="#{empresaBean.excluir(emp)}" update="contEmp" />
+						</p:column>
+						
+					</p:dataTable>
+				
+			</h:panelGrid>
+		</h:form>
+	</div>
+</ui:composition>

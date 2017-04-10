@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<div>
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:panelGrid columns="2" styleClass="comBorda" >
+					
+					<p:outputLabel for="nome" value="Nome:" />
+					<p:inputText id="nome" value="#{funcionarioBean.funcionario.nome}" />
+
+					<p:outputLabel for="cpf" value="CPF:" />
+					<p:inputText maxlength="11" id="cpf" value="#{funcionarioBean.funcionario.cpf}" />
+
+					<p:outputLabel for="end" value="Endereço:" />
+					<p:inputText id="end"
+						value="#{funcionarioBean.funcionario.endereco}" />
+
+					<p:outputLabel for="tel" value="Telefone:" />
+					<p:inputText id="tel"
+						value="#{funcionarioBean.funcionario.telefone}" />
+
+					<p:outputLabel for="cargo" value="Cargo:" />
+					<p:selectOneListbox id="cargo"
+						value="#{funcionarioBean.funcionario.idCargo}" scrollHeight="100">
+						<f:selectItems value="#{cargoBean.cargos}" var="cg"
+							itemLabel="#{cg.cargo}" itemValue="#{cg.id}" />
+					</p:selectOneListbox>
+
+					<p:outputLabel for="emp" value="Empresa:" />
+					<p:selectOneListbox id="emp"
+						value="#{funcionarioBean.funcionario.idEmpresa}" scrollHeight="100" >
+						<f:selectItems value="#{empresaBean.empresas}" var="emp"
+							itemLabel="#{emp.nomeFantasia}" itemValue="#{emp.id}" />
+					</p:selectOneListbox>
+
+					<p:outputPanel />
+					<p:panelGrid columns="2" >
+						<p:commandButton value="Novo" action="#{funcionarioBean.novo()}"
+							update="@form" />
+						<p:commandButton value="Salvar"
+							action="#{funcionarioBean.salvar()}" update="@form" />
+					</p:panelGrid>
+					
+					<f:facet name="header">
+					<p:outputLabel value="Dados do Funcionario" />
+					</f:facet>
+
+				</h:panelGrid>
+
+				<h:panelGrid >
+					<p:dataTable value="#{funcionarioBean.funcionarios}" var="fr" scrollable="true" scrollHeight="100%" >
+						<p:column headerText="Nome" >
+							<h:outputText value="#{fr.nome}" />
+						</p:column>
+						<p:column headerText="CPF" >
+							<h:outputText value="#{fr.cpf}" />
+						</p:column>
+						<p:column headerText="Endereco" priority="4">
+							<h:outputText value="#{fr.endereco}" />
+						</p:column>
+						<p:column headerText="Telefone" priority="3">
+							<h:outputText value="#{fr.telefone}" />
+						</p:column>
+						<p:column>
+							<p:commandButton value="Editar" icon="ui-icon-pencil"
+								action="#{funcionarioBean.editar(fr)}" update="@form" />
+							<p:commandButton value="Excluir" icon="ui-icon-trash"
+								action="#{funcionarioBean.excluir(fr)}" update="@form" />
+						</p:column>
+					</p:dataTable>
+					
+				</h:panelGrid>
+				
+			</h:panelGrid>
+		</h:form>
+	</div>
+</ui:composition>
